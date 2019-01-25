@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Scraping With Mongoose</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      body { background-color: rgb(17, 129, 235) }
+      #wrapper {
+        width: 100%;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 15%;
+        color: rgb(17, 129, 235);
+        font-size: 70px;
+        text-align:center;
+        background-image: url(https://learnenglishorstarve.files.wordpress.com/2017/06/news-tsodotcom.jpg);
+      }
+      #articles {
+        display: inline-block;
+        overflow: auto;
+      }
+      #notes {
+        /* float: right; */
+        width: 30%;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+      .headfoot{
+          font-size: 30px;
+      }
+      #scrapeButton{
+          background-color: rgb(226, 21, 21);
+          font-size: 20px;
+          border-radius: 5px !important;
+      }
+      #header{
+          background-color: rgb(17, 129, 235) !important;
+      }
+      #articlesNews{
+          text-align: center;
+          color: white;
+          font-size: 20px;
+      }
+      #del{
+          color: red;
+          display: none;
+          float: right;
+          margin-right: -230%;
+      }
+      #noteinput{
+          margin-bottom: -2rem;
+      }
+    </style>
+  </head>
+  <body>
+
+  <div  id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Note for id : <span id="note-id"></span></h5>   
+            </div>
+            <div class="modal-body">
+                <div id="notes"></div>
+                <input type="text" id="note-input">
+                <!-- <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button"  id="savenote" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+  </div>
+    
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-nav-bar" id="header">
+    <a class="navbar-brand" href="#">Mongo Scraper</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" id="newsHome" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="savedArticles" href="#">Saved Articles</a>
+            </li>
+        </ul>   
+    </div>
+    <div id="navButton"><a class="nav-link" href="#"><button id="scrapeButton">Scrape new articles!</button></a></div>
+  </nav>
+  <div id="wrapper"><b>MONGO SCRAPER</b></div>
+  <div id="articles"></div>
+  <p id="articlesNews">No news to display!!!</p>
+    
+  </body>
+</html>
