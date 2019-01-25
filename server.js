@@ -31,18 +31,20 @@ app.use(express.static("public"));
 //need to configure MONGODB_URI to heroku 
 // var MONGOLAB_URI="mongodb://usrname:password@saranjeet.mca@gmail.com:Mani27)#,.";
 // let url = process.env.MONGOLAB_URI || "mongodb://localhost/unit18Populater";
-var databaseUri = 'mongodb://localhost/newsScraperMongoose';
+var databaseUri = "mongodb://localhost/unit18Populater";
 //mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 if(process.env.MONGODB_URI){
+  console.log("connecting to MONGODB_URI");
   mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 }else{
+  console.log("connecting to databaseuri");
   mongoose.connect(databaseUri, { useNewUrlParser: true });
 }
-var db = mongoose.connection;
-db.on('error',function(err){
+var dbconn = mongoose.connection;
+dbconn.on('error',function(err){
   console.log('Mongoose Error: ', err);
 });
-db.once('open',function(){
+dbconn.once('open',function(){
   console.log('Mongoose connection successful');
 })
 // Routes
